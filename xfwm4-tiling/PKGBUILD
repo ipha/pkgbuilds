@@ -2,6 +2,7 @@
 
 pkgname=xfwm4-tiling
 _realname=xfwm4
+_patchver=v2
 pkgver=4.10.1
 pkgrel=2
 pkgdesc="Xfce window manager with corner tiling patch"
@@ -17,7 +18,7 @@ replaces=("${_realname}")
 options=('!libtool')
 install=${pkgname}.install
 source=(http://archive.xfce.org/src/xfce/${_realname}/4.10/${_realname}-${pkgver}.tar.bz2
-		${pkgname}-${pkgver}-${pkgrel}.patch)
+		${pkgname}-${_patchver}.patch)
 sha256sums=('380c44fba6eb779e34be0fe94f3726cfa131803014d6073c45aec8a1257fa740'
 			'585a14790072ae6f7bffa8c65069c91fd03f10fbffbcd4cc73096a794608ffd6')
 
@@ -25,7 +26,7 @@ prepare() {
 	cd "${srcdir}/${_realname}-${pkgver}"
 
 	# Corner tiling patch
-	patch -p1 < ${srcdir}/${pkgname}-${pkgver}-${pkgrel}.patch
+	patch -p1 < ${srcdir}/${pkgname}-${_patchver}.patch
 }
 
 build() {
